@@ -6,7 +6,7 @@ Disallow: /temp/
 Disallow: /cache/
 Disallow: /.github/
 
-Sitemap: https://cem468.github.io/endustrirulman/sitemap.xml
+Sitemap: https://endustrirulman.com/sitemap.xml
 
 # Google
 User-agent: Googlebot

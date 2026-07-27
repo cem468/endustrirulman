@@ -32,3 +32,6 @@ temp/
 # Dependencies
 package-lock.json
 yarn.lock
+
+# Cloudflare token (yerel)
+.cf-token
