@@ -35,3 +35,6 @@ yarn.lock
 
 # Cloudflare token (yerel)
 .cf-token
+
+# Playwright MCP ciktilari
+.playwright-mcp/
