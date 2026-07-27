@@ -287,4 +287,4 @@ document.querySelectorAll('.feature-card, .info-item').forEach(card => {
     observer.observe(card);
 });
 
-console.log('ENDUSTRİ RULMAN - Satlık Alan Adı Web Sitesi Yüklendi ✅');
+console.log('ENDUSTRİ RULMAN - Satılık Alan Adı Web Sitesi Yüklendi ✅');

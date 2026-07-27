@@ -17,7 +17,7 @@
 ## ✅ Tamamlanan SEO Optimizasyonları
 
 ### 1. **Meta Tags**
-- ✅ Title Tag: "ENDUSTRİ RULMAN - Satlık Alan Adı"
+- ✅ Title Tag: "ENDUSTRİ RULMAN - Satılık Alan Adı"
 - ✅ Meta Description: Anahtar kelimeleri içeren, 160 karakter altında
 - ✅ Meta Keywords: İlgili anahtar kelimeler
 - ✅ Robots Meta: "index, follow"

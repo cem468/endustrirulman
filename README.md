@@ -1,4 +1,4 @@
-# ENDUSTRİ RULMAN - Satlık Alan Adı Web Sitesi
+# ENDUSTRİ RULMAN - Satılık Alan Adı Web Sitesi
 
 ## 📋 İçerik Özeti
 
@@ -146,7 +146,7 @@ Form gönderimi otomatik olarak bu numaraya yapılır.
 
 ## 📈 SEO ve Meta Bilgiler
 
-- **Title**: ENDUSTRİ RULMAN - Satlık Alan Adı
+- **Title**: ENDUSTRİ RULMAN - Satılık Alan Adı
 - **Meta Charset**: UTF-8
 - **Viewport**: Responsive tasarım için ayarlanmış
 
