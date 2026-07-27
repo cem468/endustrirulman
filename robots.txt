@@ -1,22 +1,32 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
 Disallow: /tmp/
 Disallow: /temp/
 Disallow: /cache/
+Disallow: /.github/
 
-Sitemap: https://www.endustrirulman.com/sitemap.xml
+Sitemap: https://cem468.github.io/endustrirulman/sitemap.xml
 
 # Google
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0.5
 
 # Bing
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 # Yandex
 User-agent: Yandexbot
 Allow: /
-
-# Crawl-delay
 Crawl-delay: 1
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Default crawl-delay
+Crawl-delay: 1
+Request-rate: 1/10

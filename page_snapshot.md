@@ -1,0 +1,133 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - heading "ENDUSTRİ RULMAN" [level=1] [ref=e5]
+      - list [ref=e6]:
+        - listitem [ref=e7]:
+          - link "Ana Sayfa" [ref=e8] [cursor=pointer]:
+            - /url: "#home"
+        - listitem [ref=e9]:
+          - link "Özellikler" [ref=e10] [cursor=pointer]:
+            - /url: "#features"
+        - listitem [ref=e11]:
+          - link "Açık Arttırma" [ref=e12] [cursor=pointer]:
+            - /url: "#auction"
+        - listitem [ref=e13]:
+          - link "İletişim" [ref=e14] [cursor=pointer]:
+            - /url: "#contact"
+  - banner [ref=e15]:
+    - generic [ref=e18]:
+      - heading "SATILIK ALAN ADI" [level=1] [ref=e19]
+      - paragraph [ref=e20]: www.endustrirulman.com
+      - paragraph [ref=e21]: ENDUSTRİ RULMAN - Değerli İş Olanağı
+      - generic [ref=e22]:
+        - paragraph [ref=e23]: Bu premium alan adı AÇIK ARTTIRMA ile satılacaktır.
+        - paragraph [ref=e24]:
+          - text: Alan adını satın alan kişiye
+          - strong [ref=e25]: ÜCRETSİZ
+          - text: olarak istediği şekilde
+          - strong [ref=e26]: PROFESYONEL WEB SİTESİ
+          - text: yapılacaktır.
+      - generic [ref=e27]:
+        - link "Teklifini Ver" [ref=e28] [cursor=pointer]:
+          - /url: "#auction-form"
+        - link "Detayları Gör" [ref=e29] [cursor=pointer]:
+          - /url: "#features"
+  - generic [ref=e31]:
+    - heading "Neden Bu Alan Adı?" [level=2] [ref=e32]
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]: 🌐
+        - heading "Premium Alan Adı" [level=3] [ref=e36]
+        - paragraph [ref=e37]: ENDUSTRİ sektöründe profesyonel ve güvenilir bir kimlik oluşturun.
+      - generic [ref=e38]:
+        - generic [ref=e39]: 🎨
+        - heading "Ücretsiz Web Sitesi" [level=3] [ref=e40]
+        - paragraph [ref=e41]: Alan adını satın alan kişiye tamamen ücretsiz profesyonel web sitesi tasarlanacaktır.
+      - generic [ref=e42]:
+        - generic [ref=e43]: 📈
+        - heading "İşletme Fırsatı" [level=3] [ref=e44]
+        - paragraph [ref=e45]: Kendi işletmenizi kurmak veya mevcut işletmenizi geliştirmek için ideal bir platform.
+      - generic [ref=e46]:
+        - generic [ref=e47]: 💼
+        - heading "Kurumsal Kimlik" [level=3] [ref=e48]
+        - paragraph [ref=e49]: Sektörde saygınlık ve profesyonellik göstergesi olacak kurumsal bir alan adı.
+      - generic [ref=e50]:
+        - generic [ref=e51]: 🚀
+        - heading "Hızlı Başlangıç" [level=3] [ref=e52]
+        - paragraph [ref=e53]: Hazır olacak web sitesi ile hemen iş başına başlayabilirsiniz.
+      - generic [ref=e54]:
+        - generic [ref=e55]: 🔒
+        - heading "Güvenli İşlem" [level=3] [ref=e56]
+        - paragraph [ref=e57]: WhatsApp üzerinden hızlı ve güvenli bir iletişim süreci.
+  - generic [ref=e59]:
+    - heading "Açık Arttırma Detayları" [level=2] [ref=e60]
+    - generic [ref=e61]:
+      - generic [ref=e62]:
+        - heading "Başlangıç Fiyatı" [level=3] [ref=e63]
+        - paragraph [ref=e64]: 150.000 ₺
+      - generic [ref=e65]:
+        - heading "Artış Miktarı" [level=3] [ref=e66]
+        - paragraph [ref=e67]: Teklifleri Serbest
+      - generic [ref=e68]:
+        - heading "İletişim Yöntemi" [level=3] [ref=e69]
+        - paragraph [ref=e70]:
+          - text: "WhatsApp:"
+          - link "+90 532 343 1207" [ref=e71] [cursor=pointer]:
+            - /url: https://wa.me/905323431207
+  - generic [ref=e73]:
+    - heading "Açık Arttırma Teklif Formu" [level=2] [ref=e74]
+    - paragraph [ref=e75]: Lütfen aşağıdaki formu doldurun ve WhatsApp üzerinden bize ulaşın
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - generic [ref=e78]: Adınız *
+        - textbox "Adınız *" [ref=e79]:
+          - /placeholder: Adınızı girin
+      - generic [ref=e80]:
+        - generic [ref=e81]: E-posta Adresi *
+        - textbox "E-posta Adresi *" [ref=e82]:
+          - /placeholder: E-posta adresinizi girin
+      - generic [ref=e83]:
+        - generic [ref=e84]: Telefon Numarası *
+        - textbox "Telefon Numarası *" [ref=e85]:
+          - /placeholder: Telefon numaranızı girin (5XX XXX XXXX)
+      - generic [ref=e86]:
+        - generic [ref=e87]: Şirket Adı (Opsiyonel)
+        - textbox "Şirket Adı (Opsiyonel)" [ref=e88]:
+          - /placeholder: Şirket adınız (Opsiyonel)
+      - generic [ref=e89]:
+        - generic [ref=e90]: Teklif Edilen Fiyat (₺) *
+        - spinbutton "Teklif Edilen Fiyat (₺) *" [ref=e91]
+        - generic [ref=e92]: "Minimum başlangıç fiyatı: 150.000 ₺"
+      - generic [ref=e93]:
+        - generic [ref=e94]: Mesajınız (Opsiyonel)
+        - textbox "Mesajınız (Opsiyonel)" [ref=e95]:
+          - /placeholder: Ek açıklama veya sorularınız...
+      - generic [ref=e96]:
+        - button "Teklifi WhatsApp'a Gönder" [ref=e97] [cursor=pointer]
+        - button "Formu Temizle" [ref=e98] [cursor=pointer]
+      - paragraph [ref=e99]: Formu gönderdikten sonra WhatsApp üzerinden teklifiniz kaydedilecek ve değerlendirilecektir.
+  - generic [ref=e101]:
+    - heading "İletişim" [level=2] [ref=e102]
+    - generic [ref=e103]:
+      - generic [ref=e104]:
+        - heading "Bize Ulaşın" [level=3] [ref=e105]
+        - paragraph [ref=e106]: Açık arttırma teklifleri ve sorulanlarınız için WhatsApp üzerinden iletişime geçin.
+        - generic [ref=e107]:
+          - generic [ref=e108]:
+            - generic [ref=e109]: 📱
+            - 'link "WhatsApp: +90 532 343 1207" [ref=e110] [cursor=pointer]':
+              - /url: https://wa.me/905323431207
+          - generic [ref=e111]:
+            - generic [ref=e112]: 🏢
+            - paragraph [ref=e113]: ENDUSTRİ RULMAN
+        - link "📱 WhatsApp'ta Mesaj Gönder" [ref=e115] [cursor=pointer]:
+          - /url: https://wa.me/905323431207
+      - generic [ref=e116]:
+        - heading "Hızlı Teklif Gönder" [level=3] [ref=e117]
+        - paragraph [ref=e118]: Formu doldurduktan sonra aşağıdaki butona tıklayarak doğrudan WhatsApp'ta teklif gönderebilirsiniz.
+        - button "WhatsApp'ta Teklif Gönder" [ref=e119] [cursor=pointer]
+  - contentinfo [ref=e120]:
+    - generic [ref=e121]:
+      - paragraph [ref=e122]: © 2026 ENDUSTRİ RULMAN. Tüm hakları saklıdır.
+      - paragraph [ref=e123]: Açık Arttırma Sayfası - Alan Adı Satışı

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OG Image Generator</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+        }
+        .og-image {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        .og-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(90deg, transparent 24%, rgba(184, 115, 51, 0.05) 25%, rgba(184, 115, 51, 0.05) 26%, transparent 27%, transparent 74%, rgba(184, 115, 51, 0.05) 75%, rgba(184, 115, 51, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(0deg, transparent 24%, rgba(184, 115, 51, 0.05) 25%, rgba(184, 115, 51, 0.05) 26%, transparent 27%, transparent 74%, rgba(184, 115, 51, 0.05) 75%, rgba(184, 115, 51, 0.05) 76%, transparent 77%, transparent);
+            background-size: 60px 60px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .og-content {
+            position: relative;
+            z-index: 2;
+        }
+        .og-title {
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #b87333;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(184, 115, 51, 0.3);
+        }
+        .og-subtitle {
+            font-size: 36px;
+            color: #f0f0f0;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        .og-domain {
+            font-size: 42px;
+            color: #b87333;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        .og-description {
+            font-size: 24px;
+            color: #a8a8a8;
+            max-width: 900px;
+        }
+        .og-footer {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 14px;
+            color: #b87333;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="og-image">
+        <div class="og-content">
+            <div class="og-title">SATILIK ALAN ADI</div>
+            <div class="og-domain">www.endustrirulman.com</div>
+            <div class="og-subtitle">Premium Endüstri Domain</div>
+            <div class="og-description">
+                Açık Arttırma • 150.000 TL'den başlayan teklifler • Ücretsiz Web Sitesi
+            </div>
+        </div>
+        <div class="og-footer">ENDUSTRİ RULMAN</div>
+    </div>
+
+    <script>
+        // Canvas'a dönüştürme (tarayıcıda sanal olarak)
+        setTimeout(() => {
+            console.log("OG Image template created. Use a service like html2canvas or screenshot tools to convert to PNG.");
+        }, 100);
+    </script>
+</body>
+</html>
