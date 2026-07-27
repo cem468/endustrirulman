@@ -49,7 +49,9 @@ Birkaç doğrulama yöntemi sunulacak:
 
 1. **"HTML file" yöntemini seç**
 2. `google9bb1f5c4e0e2d7c3.html` dosyasını indir
-3. **Dosyayı proje root'unda zaten oluşturduk!**
+3. **Dosya zaten proje root'unda hazır!**
+   - Klasör: `/.well-known/`
+   - Tam URL: `https://cem468.github.io/endustrirulman/.well-known/google9bb1f5c4e0e2d7c3.html`
 4. **Verify (Doğrula)** butonuna tıkla
 
 #### **Seçenek 2: HTML Tag**
