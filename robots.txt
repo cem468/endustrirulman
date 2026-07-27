@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+Disallow: /tmp/
+Disallow: /temp/
+Disallow: /cache/
+
+Sitemap: https://www.endustrirulman.com/sitemap.xml
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Yandex
+User-agent: Yandexbot
+Allow: /
+
+# Crawl-delay
+Crawl-delay: 1
