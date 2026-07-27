@@ -1,7 +1,7 @@
 // WhatsApp Button Click
 function openWhatsApp() {
     const phoneNumber = '905323431207';
-    const message = 'Merhaba! Satlık Alan Adı için teklif vermek istiyorum.';
+    const message = 'Merhaba! Satılık Alan Adı için teklif vermek istiyorum.';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
@@ -61,7 +61,7 @@ function createWhatsAppMessage(name, email, phone, company, bid, message) {
     }
 
     whatsappMsg += `⏰ *Tarih:* ${getCurrentDate()}\n`;
-    whatsappMsg += `🌐 *Kaynak:* Satlık Alan Adı Web Sitesi`;
+    whatsappMsg += `🌐 *Kaynak:* Satılık Alan Adı Web Sitesi`;
 
     return whatsappMsg;
 }
