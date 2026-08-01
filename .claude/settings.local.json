@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"D:\\\\claude\\\\endustrirulman\" -File)",
+      "Bash(Select-Object Name, Length)",
+      "Bash(Format-Table -AutoSize)",
+      "PowerShell(Get-ChildItem \"D:\\\\claude\\\\endustrirulman\" | Where-Object { $_.Extension -eq \".crdownload\" })",
+      "PowerShell(Get-ChildItem \"D:\\\\claude\\\\endustrirulman\" -File | Where-Object { $_.Extension -in '.html', '.css', '.js' } | Select-Object Name, Length | Format-Table -AutoSize)",
+      "Bash(python -m http.server 8000)",
+      "Bash(curl -s http://localhost:8000)",
+      "Bash(curl -s http://localhost:8000/style.css)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git config *)",
+      "Bash(git commit *)",
+      "Bash(gh repo *)",
+      "Bash(gh api *)",
+      "Bash(git push *)",
+      "Bash(gh run *)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "mcp__plugin_playwright_playwright__browser_snapshot",
+      "WebFetch(domain:cem468.github.io)",
+      "Bash(curl -s https://cem468.github.io/endustrirulman/)",
+      "Bash(curl *)",
+      "Bash(nslookup cem468.github.io)",
+      "PowerShell(cd D:\\\\claude\\\\endustrirulman; gh run watch $\\(gh run list --limit 1 --json databaseId --jq '.[0].databaseId'\\) --exit-status; Write-Output \"EXIT: $LASTEXITCODE\")",
+      "PowerShell(cd D:\\\\claude\\\\endustrirulman; gh run watch $\\(gh run list --limit 1 --json databaseId --jq '.[0].databaseId'\\) --exit-status --compact 2>&1 | Select-Object -Last 12; Write-Output \"EXIT: $LASTEXITCODE\")",
+      "PowerShell(curl.exe -s -o NUL -w \"www  https -> %{http_code}  redirect: %{redirect_url}\\\\n\" --max-time 25 https://www.endustrirulman.com/)",
+      "PowerShell(curl.exe -s -o NUL -w \"apex http  -> %{http_code}  redirect: %{redirect_url}\\\\n\" --max-time 25 http://endustrirulman.com/)",
+      "PowerShell(curl.exe -s -o NUL -w \"apex https -> %{http_code}\\\\n\" --max-time 25 https://endustrirulman.com/)",
+      "PowerShell(cd D:\\\\claude\\\\endustrirulman; gh run watch $\\(gh run list --limit 1 --json databaseId --jq '.[0].databaseId'\\) --exit-status --compact 2>&1 | Select-Object -Last 6; Write-Output \"EXIT: $LASTEXITCODE\")",
+      "PowerShell(cd D:\\\\claude\\\\endustrirulman; gh run watch $\\(gh run list --limit 1 --json databaseId --jq '.[0].databaseId'\\) --exit-status --compact 2>&1 | Select-Object -Last 4; Write-Output \"EXIT: $LASTEXITCODE\")",
+      "PowerShell(cd D:\\\\claude\\\\endustrirulman; gh run watch $\\(gh run list --limit 1 --json databaseId --jq '.[0].databaseId'\\) --exit-status --compact 2>&1 | Select-Object -Last 3; Write-Output \"EXIT: $LASTEXITCODE\")",
+      "mcp__plugin_playwright_playwright__browser_resize",
+      "PowerShell(try{ $r=Invoke-WebRequest \"http://127.0.0.1:8765/og-image.html\" -UseBasicParsing -TimeoutSec 10; Write-Output \"SUNUCU HAZIR: $\\($r.StatusCode\\)  LEN: $\\($r.RawContentLength\\)\" }catch{ Write-Output \"HATA: $\\($_.Exception.Message\\)\" })",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot"
+    ]
+  }
+}

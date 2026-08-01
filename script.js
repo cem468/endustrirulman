@@ -1,290 +1,295 @@
-// WhatsApp Button Click
+/* ==========================================================================
+   ENDUSTRİ RULMAN - alan adı açık arttırma sayfası
+   Global fonksiyonlar (submitForm, openWhatsApp) HTML'den çağrılır, korunmalı.
+   ========================================================================== */
+
+const WHATSAPP_NUMBER = '905323431207';
+const MIN_BID = 150000;
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* --------------------------------------------------------------- WhatsApp */
+
 function openWhatsApp() {
-    const phoneNumber = '905323431207';
     const message = 'Merhaba! Satılık Alan Adı için teklif vermek istiyorum.';
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    window.open(
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
+        '_blank',
+        'noopener'
+    );
 }
 
-// Form Submission
+/* ------------------------------------------------------------- form akışı */
+
 function submitForm(event) {
     event.preventDefault();
 
-    // Get form values
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const company = document.getElementById('company').value.trim();
-    const bid = document.getElementById('bid').value.trim();
-    const message = document.getElementById('message').value.trim();
+    const form = document.getElementById('auctionForm');
+    const fields = {
+        name: document.getElementById('name'),
+        email: document.getElementById('email'),
+        phone: document.getElementById('phone'),
+        company: document.getElementById('company'),
+        bid: document.getElementById('bid'),
+        message: document.getElementById('message')
+    };
 
-    // Validate minimum bid
-    if (parseInt(bid) < 150000) {
-        alert('Lütfen minimum 150.000 ₺ veya daha fazla bir teklif verin.');
+    clearErrors(form);
+
+    const errors = validate(fields);
+    if (errors.length > 0) {
+        errors.forEach(({ field, text }) => showError(field, text));
+        errors[0].field.focus();
         return;
     }
 
-    // Create WhatsApp message
-    const whatsappMessage = createWhatsAppMessage(name, email, phone, company, bid, message);
+    const whatsappMessage = createWhatsAppMessage(
+        fields.name.value.trim(),
+        fields.email.value.trim(),
+        fields.phone.value.trim(),
+        fields.company.value.trim(),
+        fields.bid.value.trim(),
+        fields.message.value.trim()
+    );
 
-    // Send to WhatsApp
-    const phoneNumber = '905323431207';
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    showConfirmation(form);
 
-    // Show confirmation
-    showConfirmation();
+    window.open(
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`,
+        '_blank',
+        'noopener'
+    );
 
-    // Open WhatsApp after a brief delay
-    setTimeout(() => {
-        window.open(whatsappUrl, '_blank');
-    }, 500);
-
-    // Reset form
-    document.getElementById('auctionForm').reset();
+    form.reset();
 }
 
-// Create formatted WhatsApp message
+function validate(fields) {
+    const errors = [];
+
+    if (!fields.name.value.trim()) {
+        errors.push({ field: fields.name, text: 'Adınızı girin.' });
+    }
+
+    const email = fields.email.value.trim();
+    if (!email) {
+        errors.push({ field: fields.email, text: 'E-posta adresinizi girin.' });
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        errors.push({ field: fields.email, text: 'Geçerli bir e-posta adresi girin.' });
+    }
+
+    const phoneDigits = fields.phone.value.replace(/\D/g, '');
+    if (!phoneDigits) {
+        errors.push({ field: fields.phone, text: 'Telefon numaranızı girin.' });
+    } else if (phoneDigits.length !== 10) {
+        errors.push({ field: fields.phone, text: 'Telefon 10 haneli olmalı. Örnek: 532 343 12 07' });
+    }
+
+    const bid = parseInt(fields.bid.value, 10);
+    if (!fields.bid.value.trim() || Number.isNaN(bid)) {
+        errors.push({ field: fields.bid, text: 'Teklif tutarını girin.' });
+    } else if (bid < MIN_BID) {
+        errors.push({
+            field: fields.bid,
+            text: `Teklif en az ${formatCurrency(MIN_BID)} ₺ olmalı.`
+        });
+    }
+
+    return errors;
+}
+
+function showError(field, text) {
+    const group = field.closest('.form-group');
+    if (!group) return;
+
+    group.classList.add('has-error');
+    field.setAttribute('aria-invalid', 'true');
+
+    const note = document.createElement('span');
+    note.className = 'field-error';
+    note.setAttribute('role', 'alert');
+    note.textContent = text;
+    group.appendChild(note);
+}
+
+function clearErrors(form) {
+    form.querySelectorAll('.field-error').forEach((el) => el.remove());
+    form.querySelectorAll('.has-error').forEach((el) => el.classList.remove('has-error'));
+    form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+}
+
 function createWhatsAppMessage(name, email, phone, company, bid, message) {
-    let whatsappMsg = `🔔 *SATILIK ALAN ADI - AÇIK ARTTIRMA TEKLİFİ*\n\n`;
-    whatsappMsg += `👤 *Ad-Soyad:* ${name}\n`;
-    whatsappMsg += `📧 *E-posta:* ${email}\n`;
-    whatsappMsg += `📱 *Telefon:* ${phone}\n`;
+    let text = '*SATILIK ALAN ADI - AÇIK ARTTIRMA TEKLİFİ*\n\n';
+    text += `*Ad-Soyad:* ${name}\n`;
+    text += `*E-posta:* ${email}\n`;
+    text += `*Telefon:* ${phone}\n`;
 
     if (company) {
-        whatsappMsg += `🏢 *Şirket:* ${company}\n`;
+        text += `*Şirket:* ${company}\n`;
     }
 
-    whatsappMsg += `\n💰 *TEKLİF FİYATI: ${formatCurrency(bid)} ₺*\n\n`;
+    text += `\n*TEKLİF FİYATI: ${formatCurrency(bid)} ₺*\n\n`;
 
     if (message) {
-        whatsappMsg += `💬 *Mesaj:*\n${message}\n\n`;
+        text += `*Mesaj:*\n${message}\n\n`;
     }
 
-    whatsappMsg += `⏰ *Tarih:* ${getCurrentDate()}\n`;
-    whatsappMsg += `🌐 *Kaynak:* Satılık Alan Adı Web Sitesi`;
+    text += `*Tarih:* ${getCurrentDate()}\n`;
+    text += '*Kaynak:* endustrirulman.com';
 
-    return whatsappMsg;
+    return text;
 }
 
-// Format currency
 function formatCurrency(amount) {
-    return parseInt(amount).toLocaleString('tr-TR');
+    return parseInt(amount, 10).toLocaleString('tr-TR');
 }
 
-// Get current date
 function getCurrentDate() {
-    const options = {
+    return new Date().toLocaleDateString('tr-TR', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
         hour: '2-digit',
         minute: '2-digit'
-    };
-
-    return new Date().toLocaleDateString('tr-TR', options);
-}
-
-// Show confirmation message
-function showConfirmation() {
-    const confirmation = document.createElement('div');
-    confirmation.className = 'confirmation-message';
-    confirmation.innerHTML = `
-        <div class="confirmation-content">
-            <div class="confirmation-icon">✅</div>
-            <h3>Teklif Alındı!</h3>
-            <p>Teklifiniz WhatsApp'a gönderilmek üzere hazırlanmıştır.</p>
-            <p class="small-text">Lütfen açılan penceredeki "Gönder" butonuna tıklayın.</p>
-        </div>
-    `;
-
-    document.body.appendChild(confirmation);
-
-    // Auto remove after 4 seconds
-    setTimeout(() => {
-        confirmation.remove();
-    }, 4000);
-}
-
-// Add confirmation message styles dynamically
-const style = document.createElement('style');
-style.textContent = `
-    .confirmation-message {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: linear-gradient(135deg, #27ae60, #229954);
-        color: white;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        z-index: 1000;
-        animation: slideIn 0.4s ease-out;
-        text-align: center;
-        max-width: 400px;
-    }
-
-    @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translate(-50%, -60%);
-        }
-        to {
-            opacity: 1;
-            transform: translate(-50%, -50%);
-        }
-    }
-
-    .confirmation-content h3 {
-        color: white;
-        margin: 1rem 0 0.5rem 0;
-        font-size: 1.5rem;
-    }
-
-    .confirmation-content p {
-        margin: 0.5rem 0;
-        color: rgba(255, 255, 255, 0.9);
-    }
-
-    .small-text {
-        font-size: 0.85rem;
-        color: rgba(255, 255, 255, 0.8);
-        font-style: italic;
-    }
-
-    .confirmation-icon {
-        font-size: 3rem;
-        margin-bottom: 0.5rem;
-    }
-
-    /* Smooth scroll behavior */
-    html {
-        scroll-behavior: smooth;
-    }
-
-    /* Input validation styles */
-    .form-group input:invalid:not(:placeholder-shown),
-    .form-group textarea:invalid:not(:placeholder-shown) {
-        border-color: #e74c3c;
-        background-color: rgba(231, 76, 60, 0.05);
-    }
-
-    /* Responsive confirmation */
-    @media (max-width: 768px) {
-        .confirmation-message {
-            max-width: 90%;
-            margin: 0 auto;
-        }
-    }
-`;
-document.head.appendChild(style);
-
-// Add smooth scroll effect for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Input number formatting for bid
-const bidInput = document.getElementById('bid');
-if (bidInput) {
-    bidInput.addEventListener('change', function () {
-        if (this.value < 150000) {
-            this.value = 150000;
-        }
-    });
-
-    bidInput.addEventListener('blur', function () {
-        if (this.value) {
-            // Format display but keep raw value
-            const formatted = formatCurrency(this.value);
-        }
     });
 }
 
-// Phone number formatting
+/* Onay mesajı: sayfa dilinde, marka aksanında, form içinde (bağlamsal) */
+function showConfirmation(form) {
+    form.querySelectorAll('.form-sent').forEach((el) => el.remove());
+
+    const box = document.createElement('p');
+    box.className = 'form-sent';
+    box.setAttribute('role', 'status');
+    box.textContent = 'Teklifiniz hazırlandı. Açılan WhatsApp penceresinden gönderin.';
+    form.appendChild(box);
+
+    window.setTimeout(() => box.remove(), 8000);
+}
+
+/* ------------------------------------------------- telefon biçimlendirme */
+
 const phoneInput = document.getElementById('phone');
 if (phoneInput) {
     phoneInput.addEventListener('input', function () {
         let value = this.value.replace(/\D/g, '');
+
         if (value.startsWith('0')) {
             value = value.substring(1);
         }
-        if (value.length > 10) {
-            value = value.substring(0, 10);
-        }
+        value = value.substring(0, 10);
 
-        if (value.length > 0) {
-            if (value.length <= 3) {
-                this.value = value;
-            } else if (value.length <= 6) {
-                this.value = value.substring(0, 3) + ' ' + value.substring(3);
-            } else if (value.length <= 8) {
-                this.value = value.substring(0, 3) + ' ' + value.substring(3, 6) + ' ' + value.substring(6);
-            } else {
-                this.value = value.substring(0, 3) + ' ' + value.substring(3, 6) + ' ' + value.substring(6, 8) + ' ' + value.substring(8);
-            }
-        }
+        const parts = [];
+        if (value.length > 0) parts.push(value.substring(0, 3));
+        if (value.length > 3) parts.push(value.substring(3, 6));
+        if (value.length > 6) parts.push(value.substring(6, 8));
+        if (value.length > 8) parts.push(value.substring(8, 10));
+
+        this.value = parts.join(' ');
     });
 }
 
-// Add keyboard shortcut for quick offer
-document.addEventListener('keydown', function (e) {
-    // Alt + W for WhatsApp
-    if (e.altKey && e.key.toLowerCase() === 'w') {
-        openWhatsApp();
+/* ------------------------------------------------------- kaydırma açılışı */
+
+if (!prefersReducedMotion) {
+    const revealTargets = document.querySelectorAll(
+        '.section-title, .cell, .spec, .offer-text, .offer-sub, ' +
+        '.auction-form, .form-brief, .editorial-body, .contact-shell > *'
+    );
+
+    const revealObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry, i) => {
+                if (!entry.isIntersecting) return;
+                // Aynı anda giren öğeler arasında küçük gecikme: sıralı okuma hissi
+                entry.target.style.transitionDelay = `${Math.min(i, 5) * 60}ms`;
+                entry.target.classList.add('is-in');
+                revealObserver.unobserve(entry.target);
+            });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    revealTargets.forEach((el) => revealObserver.observe(el));
+} else {
+    document.querySelectorAll(
+        '.section-title, .cell, .spec, .offer-text, .offer-sub, ' +
+        '.auction-form, .form-brief, .editorial-body, .contact-shell > *'
+    ).forEach((el) => el.classList.add('is-in'));
+}
+
+/* --------------------------------------- navbar: kaydırıldığında katılaşır */
+
+const navbar = document.getElementById('navbar');
+if (navbar) {
+    // Sentinel + IntersectionObserver; scroll dinleyicisi kullanılmaz
+    const sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:1px;';
+    document.body.prepend(sentinel);
+
+    new IntersectionObserver(
+        ([entry]) => navbar.classList.toggle('is-stuck', !entry.isIntersecting),
+        { threshold: 0 }
+    ).observe(sentinel);
+}
+
+/* ------------------------------------------------- fiyat sayaç animasyonu */
+/* Gerekçe: teklifin alt sınırı sayfanın en önemli sayısı; dikkati oraya çeker */
+
+function animateCount(el) {
+    const target = parseInt(el.dataset.countTo, 10);
+    if (Number.isNaN(target)) return;
+
+    const duration = 1100;
+    const start = performance.now();
+
+    function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        // easeOutExpo
+        const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        el.textContent = Math.round(target * eased).toLocaleString('tr-TR');
+        if (progress < 1) requestAnimationFrame(tick);
     }
-});
 
-// Page load animation
-window.addEventListener('load', function () {
-    document.body.style.opacity = '1';
-    document.body.style.animation = 'fadeIn 0.5s ease-in';
-});
+    requestAnimationFrame(tick);
+}
 
-// Add fade in animation
-const fadeInStyle = document.createElement('style');
-fadeInStyle.textContent = `
-    body {
-        opacity: 0;
+const counters = document.querySelectorAll('[data-count-to]');
+if (counters.length > 0) {
+    if (prefersReducedMotion) {
+        counters.forEach((el) => {
+            el.textContent = parseInt(el.dataset.countTo, 10).toLocaleString('tr-TR');
+        });
+    } else {
+        const countObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    animateCount(entry.target);
+                    countObserver.unobserve(entry.target);
+                });
+            },
+            { threshold: 0.5 }
+        );
+
+        counters.forEach((el) => countObserver.observe(el));
     }
+}
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-`;
-document.head.appendChild(fadeInStyle);
+/* ------------------------------------------------ yumuşak bölüm geçişleri */
 
-// Scroll animation for feature cards
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+        const id = this.getAttribute('href');
+        if (id === '#' || id.length < 2) return;
 
-const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
-            observer.unobserve(entry.target);
-        }
+        const target = document.querySelector(id);
+        if (!target) return;
+
+        e.preventDefault();
+        target.scrollIntoView({
+            behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            block: 'start'
+        });
     });
-}, observerOptions);
-
-document.querySelectorAll('.feature-card, .info-item').forEach(card => {
-    card.style.opacity = '0';
-    observer.observe(card);
 });
-
-console.log('ENDUSTRİ RULMAN - Satılık Alan Adı Web Sitesi Yüklendi ✅');

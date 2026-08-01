@@ -23,6 +23,7 @@
     <meta name="twitter:description" content="Premium endüstri rulman domain açık arttırması. Alan adı sahibine ücretsiz web sitesi.">
     <meta name="twitter:image" content="https://endustrirulman.com/og-image.png">
     <meta name="twitter:image:alt" content="SATILIK ALAN ADI - endustrirulman.com açık arttırma">
+    <meta name="theme-color" content="#141414">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="alternate icon" href="/favicon.ico">
     <link rel="canonical" href="https://endustrirulman.com/">
@@ -91,131 +92,192 @@
         }
     }
     </script>
+
+    <!-- Girişlerin FOUC'suz açılabilmesi için sınıf boyamadan önce eklenir -->
+    <script>document.documentElement.classList.add('js-reveal');</script>
 </head>
 <body>
+    <a href="#home" class="skip-link">İçeriğe geç</a>
+
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#home" class="logo" aria-label="ENDUSTRİ RULMAN ana sayfa">
+                <span class="logo-mark" aria-hidden="true"></span>
                 <span class="logo-text">ENDUSTRİ RULMAN</span>
-            </div>
+            </a>
             <ul class="nav-links">
                 <li><a href="#home" title="ENDUSTRİ RULMAN Ana Sayfa">Ana Sayfa</a></li>
                 <li><a href="#features" title="Alan Adının Özellikleri">Özellikler</a></li>
                 <li><a href="#auction" title="Açık Arttırma ve Teklif Verme">Açık Arttırma</a></li>
                 <li><a href="#contact" title="İletişim Bilgileri">İletişim</a></li>
             </ul>
+            <a href="#auction-form" class="btn btn-primary btn-sm nav-cta">Teklif Ver</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero: asymmetric split. Left = the claim, right = the auction ledger. -->
     <header id="home" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">SATILIK ALAN ADI</h1>
-                <p class="domain-name">endustrirulman.com</p>
-                <p class="hero-subtitle">ENDUSTRİ RULMAN - Değerli İş Olanağı</p>
-                <div class="hero-description">
-                    <p>Bu premium alan adı <span class="highlight">AÇIK ARTTIRMA</span> ile satılacaktır.</p>
-                    <p class="lead-text">Alan adını satın alan kişiye <strong>ÜCRETSİZ</strong> olarak istediği şekilde <strong>PROFESYONEL WEB SİTESİ</strong> yapılacaktır.</p>
-                </div>
-                <div class="cta-buttons">
-                    <a href="#auction-form" class="btn btn-primary">Teklifini Ver</a>
-                    <a href="#features" class="btn btn-secondary">Detayları Gör</a>
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-inner">
+            <div class="hero-claim">
+                <h1 class="hero-title">
+                    <span class="hero-title-line reveal-line">SATILIK</span>
+                    <span class="hero-title-line reveal-line">ALAN ADI</span>
+                </h1>
+                <p class="domain-name reveal-line">endustrirulman.com</p>
+                <p class="hero-lede reveal-line">
+                    Alan adını alan kişiye, istediği şekilde ücretsiz web sitesi yapılır.
+                    Teklifler 150.000 ₺'den başlar.
+                </p>
+                <div class="cta-buttons reveal-line">
+                    <a href="#auction-form" class="btn btn-primary">Teklif Ver</a>
+                    <a href="#features" class="btn btn-ghost">Detaylar</a>
                 </div>
             </div>
+
+            <aside class="hero-ledger reveal-line" aria-label="Açık arttırma özeti">
+                <div class="ledger-head">Açık arttırma</div>
+                <div class="ledger-price">
+                    <span class="ledger-amount" data-count-to="150000">150.000</span>
+                    <span class="ledger-currency">₺</span>
+                </div>
+                <div class="ledger-note">Başlangıç teklifi</div>
+                <dl class="ledger-rows">
+                    <div class="ledger-row">
+                        <dt>Artış adımı</dt>
+                        <dd>Serbest</dd>
+                    </div>
+                    <div class="ledger-row">
+                        <dt>Durum</dt>
+                        <dd><span class="status-live">Teklife açık</span></dd>
+                    </div>
+                    <div class="ledger-row">
+                        <dt>Kanal</dt>
+                        <dd>WhatsApp</dd>
+                    </div>
+                </dl>
+            </aside>
         </div>
     </header>
 
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="container">
-            <h2>Endüstri Rulman Nedir?</h2>
-            <div class="about-content">
-                <p>Endüstriyel rulman, ağır sanayi ve üretim tesislerinde kritik rol oynayan mekanik bileşenlerdir. Türkiye'nin gelişen sanayi sektöründe, rulman satışı ve endüstriyel ürünler ticareti giderek önem kazanmaktadır. <strong>ENDUSTRİ RULMAN</strong> alan adı, bu dinamik sektörde hizmet veren işletmeler için mükemmel bir kurumsal kimlik ve dijital platform sağlamaktadır.</p>
+    <!-- Offer band: full-width statement. The free-website promise gets its own moment. -->
+    <section class="offer-band">
+        <div class="shell">
+            <p class="offer-text">
+                Alan adını kazanan kişiye <strong>ücretsiz</strong> olarak,
+                <strong>istediği şekilde</strong> profesyonel bir web sitesi yapılır.
+            </p>
+            <p class="offer-sub">Tasarım, kurulum ve yayına alma dahil. Ek ücret yok.</p>
+        </div>
+    </section>
 
-                <p>Premium alan adı, işletmenizin profesyonelliğini ve güvenilirliğini müşterilerinize iletmek için önemli bir araçtır. Endüstriyel ürünler pazarında, güçlü bir web varlığı ve tanınır bir domain adı, satış ve müşteri güveni açısından belirleyici faktörlerdedir.</p>
+    <!-- Features: bento grid, 6 items in 6 cells with deliberate rhythm -->
+    <section id="features" class="features">
+        <div class="shell">
+            <h2 class="section-title">Neden bu alan adı</h2>
+            <div class="bento">
+                <article class="cell cell-lead">
+                    <div class="cell-grid" aria-hidden="true"></div>
+                    <div class="cell-body">
+                        <h3>Ücretsiz web sitesi</h3>
+                        <p>
+                            Alan adını satın alan kişiye tamamen ücretsiz, istediği şekilde
+                            profesyonel bir web sitesi tasarlanır ve yayına alınır.
+                        </p>
+                    </div>
+                </article>
 
-                <h3>Sektörde Başarının Anahtarları:</h3>
+                <article class="cell">
+                    <h3>Premium alan adı</h3>
+                    <p>Endüstri sektöründe akılda kalan, güvenilir bir kimlik.</p>
+                </article>
+
+                <article class="cell">
+                    <h3>Kurumsal kimlik</h3>
+                    <p>Sektörde saygınlık ve profesyonellik göstergesi bir adres.</p>
+                </article>
+
+                <article class="cell">
+                    <h3>İşletme fırsatı</h3>
+                    <p>Yeni bir işletme kurmak ya da mevcut işi büyütmek için hazır zemin.</p>
+                </article>
+
+                <article class="cell">
+                    <h3>Hızlı başlangıç</h3>
+                    <p>Hazır teslim edilen site ile ilk günden satışa başlayın.</p>
+                </article>
+
+                <article class="cell cell-inset">
+                    <h3>Doğrudan iletişim</h3>
+                    <p>Aracı yok. Teklifiniz WhatsApp üzerinden doğrudan bize ulaşır.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editorial column: SEO prose, offset composition -->
+    <section class="editorial">
+        <div class="shell editorial-shell">
+            <div class="editorial-aside">
+                <h2 class="section-title editorial-title">Endüstri rulman nedir</h2>
+            </div>
+            <div class="editorial-body">
+                <p>Endüstriyel rulman, ağır sanayi ve üretim tesislerinde kritik rol oynayan mekanik bileşenlerdir. Türkiye'nin gelişen sanayi sektöründe, rulman satışı ve endüstriyel ürünler ticareti giderek önem kazanmaktadır. <strong>ENDUSTRİ RULMAN</strong> alan adı, bu dinamik sektörde hizmet veren işletmeler için mükemmel bir kurumsal kimlik ve dijital platform sağlar.</p>
+
+                <p>Premium alan adı, işletmenizin profesyonelliğini ve güvenilirliğini müşterilerinize iletmek için önemli bir araçtır. Endüstriyel ürünler pazarında güçlü bir web varlığı ve tanınır bir alan adı, satış ve müşteri güveni açısından belirleyici olur.</p>
+
                 <ul class="benefits-list">
-                    <li>✓ Profesyonel ve hatırlanması kolay domain adı</li>
-                    <li>✓ Kurumsal kimlik ile güvenilirlik inşa etme</li>
-                    <li>✓ Endüstriyel sektörde zirve konumlanma</li>
-                    <li>✓ Müşteri iletişiminde saygınlık arttırma</li>
-                    <li>✓ Dijital pazarlamada güçlü bir temel oluşturma</li>
+                    <li>Profesyonel ve hatırlanması kolay alan adı</li>
+                    <li>Kurumsal kimlik ile güvenilirlik inşa etme</li>
+                    <li>Endüstriyel sektörde üst sıralarda konumlanma</li>
+                    <li>Müşteri iletişiminde saygınlık</li>
+                    <li>Dijital pazarlama için güçlü bir temel</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2>Neden Bu Alan Adı?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3>Premium Alan Adı</h3>
-                    <p>ENDUSTRİ sektöründe profesyonel ve güvenilir bir kimlik oluşturun.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Ücretsiz Web Sitesi</h3>
-                    <p>Alan adını satın alan kişiye tamamen ücretsiz profesyonel web sitesi tasarlanacaktır.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>İşletme Fırsatı</h3>
-                    <p>Kendi işletmenizi kurmak veya mevcut işletmenizi geliştirmek için ideal bir platform.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💼</div>
-                    <h3>Kurumsal Kimlik</h3>
-                    <p>Sektörde saygınlık ve profesyonellik göstergesi olacak kurumsal bir alan adı.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Hızlı Başlangıç</h3>
-                    <p>Hazır olacak web sitesi ile hemen iş başına başlayabilirsiniz.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Güvenli İşlem</h3>
-                    <p>WhatsApp üzerinden hızlı ve güvenli bir iletişim süreci.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Auction Section -->
+    <!-- Auction data: ledger strip, mono numerals, sparse rules -->
     <section id="auction" class="auction-section">
-        <div class="container">
-            <h2>Açık Arttırma Detayları</h2>
-            <div class="auction-info">
-                <div class="info-item">
-                    <h3>Başlangıç Fiyatı</h3>
-                    <p class="price">150.000 ₺</p>
+        <div class="shell">
+            <h2 class="section-title">Açık arttırma detayları</h2>
+            <div class="specs">
+                <div class="spec spec-hero">
+                    <span class="spec-label">Başlangıç fiyatı</span>
+                    <span class="spec-value spec-value-xl"><span data-count-to="150000">150.000</span> ₺</span>
                 </div>
-                <div class="info-item">
-                    <h3>Artış Miktarı</h3>
-                    <p>Teklifleri Serbest</p>
+                <div class="spec">
+                    <span class="spec-label">Artış adımı</span>
+                    <span class="spec-value">Serbest</span>
                 </div>
-                <div class="info-item">
-                    <h3>İletişim Yöntemi</h3>
-                    <p>WhatsApp: <a href="https://wa.me/905323431207" target="_blank" class="whatsapp-link">+90 532 343 1207</a></p>
+                <div class="spec">
+                    <span class="spec-label">Bitiş tarihi</span>
+                    <span class="spec-value">Duyurulacak</span>
+                </div>
+                <div class="spec">
+                    <span class="spec-label">İletişim</span>
+                    <span class="spec-value">
+                        <a href="https://wa.me/905323431207" target="_blank" rel="noopener" class="whatsapp-link">+90 532 343 1207</a>
+                    </span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Auction Form Section -->
+    <!-- Bid form: sticky brief on the left, form on the right -->
     <section id="auction-form" class="form-section">
-        <div class="container">
-            <h2>Açık Arttırma Teklif Formu</h2>
-            <p class="form-subtitle">Lütfen aşağıdaki formu doldurun ve WhatsApp üzerinden bize ulaşın</p>
+        <div class="shell form-shell">
+            <div class="form-brief">
+                <h2 class="section-title form-title">Teklifini gönder</h2>
+                <p class="form-brief-text">
+                    Formu doldurun. Teklifiniz WhatsApp üzerinden bize iletilir
+                    ve değerlendirmeye alınır.
+                </p>
+                <p class="form-brief-min">Alt sınır <strong>150.000 ₺</strong></p>
+            </div>
 
-            <form id="auctionForm" class="auction-form" onsubmit="submitForm(event)">
+            <form id="auctionForm" class="auction-form" onsubmit="submitForm(event)" novalidate>
                 <div class="form-group">
                     <label for="name">Adınız *</label>
                     <input type="text" id="name" name="name" placeholder="Adınızı girin" aria-label="Adınız" aria-required="true" required>
@@ -228,80 +290,53 @@
 
                 <div class="form-group">
                     <label for="phone">Telefon Numarası *</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Telefon numaranızı girin (5XX XXX XXXX)" aria-label="Telefon Numarası" aria-required="true" required>
+                    <input type="tel" id="phone" name="phone" placeholder="5XX XXX XX XX" aria-label="Telefon Numarası" aria-required="true" required>
                 </div>
 
                 <div class="form-group">
                     <label for="company">Şirket Adı (Opsiyonel)</label>
-                    <input type="text" id="company" name="company" placeholder="Şirket adınız (Opsiyonel)" aria-label="Şirket Adı">
+                    <input type="text" id="company" name="company" placeholder="Şirket adınız" aria-label="Şirket Adı">
                 </div>
 
                 <div class="form-group">
                     <label for="bid">Teklif Edilen Fiyat (₺) *</label>
-                    <input type="number" id="bid" name="bid" placeholder="Minimum 150.000 ₺" min="150000" step="1000" aria-label="Teklif Edilen Fiyat" aria-required="true" required>
-                    <small>Minimum başlangıç fiyatı: 150.000 ₺</small>
+                    <input type="number" id="bid" name="bid" placeholder="150000" min="150000" step="1000" inputmode="numeric" aria-label="Teklif Edilen Fiyat" aria-required="true" aria-describedby="bid-help" required>
+                    <small id="bid-help">Minimum başlangıç fiyatı: 150.000 ₺</small>
                 </div>
 
                 <div class="form-group">
                     <label for="message">Mesajınız (Opsiyonel)</label>
-                    <textarea id="message" name="message" placeholder="Ek açıklama veya sorularınız..." rows="4" aria-label="Ek Mesajınız"></textarea>
+                    <textarea id="message" name="message" placeholder="Ek açıklama veya sorularınız" rows="4" aria-label="Ek Mesajınız"></textarea>
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Teklifi WhatsApp'a Gönder</button>
-                    <button type="reset" class="btn btn-secondary">Formu Temizle</button>
+                    <button type="submit" class="btn btn-primary">Teklifi Gönder</button>
+                    <button type="reset" class="btn btn-ghost">Temizle</button>
                 </div>
 
-                <p class="form-note">Formu gönderdikten sonra WhatsApp üzerinden teklifiniz kaydedilecek ve değerlendirilecektir.</p>
+                <p class="form-note">Gönderdikten sonra WhatsApp açılır ve teklifiniz iletilir.</p>
             </form>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact: condensed band, single CTA -->
     <section id="contact" class="contact-section">
-        <div class="container">
-            <h2>İletişim</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Bize Ulaşın</h3>
-                    <p>Açık arttırma teklifleri ve sorulanlarınız için WhatsApp üzerinden iletişime geçin.</p>
-
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <span class="icon">📱</span>
-                            <a href="https://wa.me/905323431207" target="_blank" class="contact-link" title="ENDUSTRİ RULMAN WhatsApp İletişim" aria-label="WhatsApp ile iletişime geçin">
-                                WhatsApp: +90 532 343 1207
-                            </a>
-                        </div>
-                        <div class="contact-item">
-                            <span class="icon">🏢</span>
-                            <p>ENDUSTRİ RULMAN</p>
-                        </div>
-                    </div>
-
-                    <div class="direct-whatsapp">
-                        <a href="https://wa.me/905323431207" target="_blank" class="btn btn-primary" aria-label="WhatsApp'ta doğrudan mesaj gönder">
-                            📱 WhatsApp'ta Mesaj Gönder
-                        </a>
-                    </div>
-                </div>
-
-                <div class="quick-offer">
-                    <h3>Hızlı Teklif Gönder</h3>
-                    <p>Formu doldurduktan sonra aşağıdaki butona tıklayarak doğrudan WhatsApp'ta teklif gönderebilirsiniz.</p>
-                    <button onclick="openWhatsApp()" class="btn btn-success">
-                        WhatsApp'ta Teklif Gönder
-                    </button>
-                </div>
+        <div class="shell contact-shell">
+            <div class="contact-copy">
+                <h2 class="section-title contact-title">İletişim</h2>
+                <p>Teklifler ve sorular için doğrudan WhatsApp üzerinden yazabilirsiniz.</p>
+            </div>
+            <div class="contact-action">
+                <p class="contact-number">+90 532 343 1207</p>
+                <button onclick="openWhatsApp()" class="btn btn-primary">WhatsApp'ta Yaz</button>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 ENDUSTRİ RULMAN. Tüm hakları saklıdır.</p>
-            <p>Açık Arttırma Sayfası - Alan Adı Satışı</p>
+        <div class="shell footer-shell">
+            <p>&copy; 2026 ENDUSTRİ RULMAN</p>
+            <p>Alan adı satışı ve açık arttırma sayfası</p>
         </div>
     </footer>
 
