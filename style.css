@@ -291,7 +291,7 @@ strong {
     padding: 96px 0 72px;
     background: var(--ink);
     border-bottom: 1px solid var(--line);
-    overflow: hidden;
+    overflow: clip;
 }
 
 /* Mühendislik ızgarası - markanın mevcut dokusu, korunuyor */
@@ -1058,11 +1058,11 @@ strong {
 
     .hero {
         padding: 56px 0 56px;
-        overflow: visible;
     }
 
     .hero-title {
-        font-size: clamp(1.75rem, 10vw, 2.75rem);
+        font-size: clamp(1.5rem, 9vw, 2.5rem);
+        letter-spacing: -0.02em;
     }
 
     .hero-grid {
